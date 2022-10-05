@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
 	// if s is a string, so also an array of bytes
@@ -33,13 +36,33 @@ func main() {
 	var b []byte
 	s = "professional go developer"
 	b = append(b, s...)
-	fmt.Printf("new value of s: %s\n", s)
+	fmt.Printf("Current value of s: %s\n", s)
 	fmt.Printf("value of b: %v\n", b)
 	fmt.Println("")
 
 	// show how to make substrings from a string
 	showMakingSubstring()
+
+	// changing a character in a string
 	showChangingCharacterString()
+
+	// searching and sorting slices and arrays
+	searchAndSortingSlicesNArrays()
+
+	// non-consecutive
+	fmt.Println("--- non-consecutive values in array ---")
+	arr := []byte{'a', 'b', 'a', 'a', 'a', 'c', 'd', 'e', 'f', 'g'}
+	fmt.Printf("value of arr: %v\n", arr)
+	for _, c := range arr {
+		fmt.Printf("%c ", c)
+	}
+	nonConArr := nonConsecutive(arr)
+	fmt.Printf("\nvalue of non-consecutive: %v\n", nonConArr)
+	for _, c := range nonConArr {
+		fmt.Printf("%c ", c)
+	}
+	fmt.Println("")
+
 }
 
 func showMakingSubstring() {
@@ -66,4 +89,47 @@ func showChangingCharacterString() {
 	fmt.Println("Change character string")
 	fmt.Printf("new string s2: %s\n", s2)
 	fmt.Println("")
+}
+
+func searchAndSortingSlicesNArrays() {
+	a := []int{107, 7, 97, 77, 27, 37, 47, 67, 17, 87, 57}
+	fmt.Println("--- Searching and sorting slices and arrays ---")
+	fmt.Printf("value of a: %v\n", a)
+	if sort.IntsAreSorted(a) == false {
+		fmt.Println("the a array is not sorted")
+	}
+	sort.Ints(a)
+	fmt.Printf("value of a sorted: %v\n", a)
+	if sort.IntsAreSorted(a) {
+		fmt.Println("the a array is sorted")
+	}
+
+	s := []string{"Alejo", "Tali", "Magally", "Will", "Leo", "Abuela", "Abuelo", "Tato"}
+	fmt.Printf("value of s: %v\n", s)
+	sort.Strings(s)
+	fmt.Printf("value of s sorted: %v\n", s)
+	fmt.Println("")
+
+	// searching in an array it must be sorted first
+	i := sort.SearchInts(a, 77)
+	fmt.Printf("position where the number %v is located: %d\n", a[i], i)
+	fmt.Println("")
+
+	i = sort.SearchStrings(s, "Will")
+	fmt.Printf("position where the string %v is located: %d\n", s[i], i)
+	fmt.Println("")
+}
+
+func nonConsecutive(s []byte) []byte {
+	arru := make([]byte,len(s))
+	ixu := 0
+	tmp := byte(0)
+	for _, val := range s {
+		if val != tmp {
+			arru[ixu] = val
+			ixu++
+		}
+		tmp = val
+	}
+	return arru
 }
