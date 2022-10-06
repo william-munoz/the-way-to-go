@@ -40,6 +40,7 @@ func main() {
 	// show how to make substrings from a string
 	showMakingSubstring()
 	showChangingCharacterString()
+	sortingArray()
 }
 
 func showMakingSubstring() {
@@ -63,7 +64,14 @@ func showChangingCharacterString() {
 	c := []byte(s)
 	c[1] = 'a'
 	s2 := string(c)
-	fmt.Println("Change character string")
+	fmt.Println("--- Change character string ---")
 	fmt.Printf("new string s2: %s\n", s2)
+	fmt.Println("")
+}
+
+func sortingArray() {
+	a := []int{7, 5, 6, 1, 9, 17, 10}
+	fmt.Println("--- Sorting Arrays ---")
+	fmt.Printf("a values: %v", a)
 	fmt.Println("")
 }
