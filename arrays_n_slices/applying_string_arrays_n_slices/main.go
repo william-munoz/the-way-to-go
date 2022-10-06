@@ -97,6 +97,8 @@ func sortingArray() {
 	fmt.Println("--- Sorting Arrays ---")
 	fmt.Printf("a values: %v", a)
 	fmt.Println("")
+}
+
 func searchAndSortingSlicesNArrays() {
 	a := []int{107, 7, 97, 77, 27, 37, 47, 67, 17, 87, 57}
 	fmt.Println("--- Searching and sorting slices and arrays ---")
@@ -127,7 +129,7 @@ func searchAndSortingSlicesNArrays() {
 }
 
 func nonConsecutive(s []byte) []byte {
-	arru := make([]byte,len(s))
+	arru := make([]byte, len(s))
 	ixu := 0
 	tmp := byte(0)
 	for _, val := range s {
